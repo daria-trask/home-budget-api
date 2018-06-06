@@ -18,3 +18,7 @@ env:
 #install:
 #  - pip install -q Django==$DJANGO_VERSION
 #  - python setup.py -q install
+
+script:
+  - echo "TODO"
+  
