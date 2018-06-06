@@ -1,0 +1,20 @@
+language: python
+python:
+  - "3.6"
+
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+
+# FUTURE USE
+# command to run tests
+#script:
+#  - pytest
+
+env:
+  - DJANGO_VERSION=2.0.6
+
+# FUTURE USE
+#install:
+#  - pip install -q Django==$DJANGO_VERSION
+#  - python setup.py -q install
