@@ -1,0 +1,30 @@
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+    <h1>{{list.name}}</h1>
+    <h2>{{list.total_sum}}</h2>
+
+    {% if error_message %}
+        <p><strong>{{error_message}}</strong></p>
+    {% endif %}
+
+    <ul>
+        {% for item in list.item_set.all %}
+            <li><a href="{% url 'accounts:item' list.account.id list.id item.id %}">{{item.name}}</a> - {{item.price}}</li>
+        {% endfor%}
+    </ul>
+
+    <form action="{% url 'accounts:prioritized' list.account.id list.id %}" method="post">
+        {% csrf_token %}
+        {% for item in list.item_set.all %}
+            <input type="radio" id="item{{forloop.counter}}" name="item" value="{{item.id}}"/>
+            <label for="item{{forloop.counter}}">
+                {{item.name}}
+                {% if item.is_prioritized %}
+                    <img src="http://i.imgur.com/b9b13Rd.png"/>
+                {% endif %}
+            </label><br>
+        {% endfor %}
+        <input type="submit" value="Prioritized"/>
+    </form>
+{% endblock %}

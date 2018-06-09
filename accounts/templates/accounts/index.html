@@ -1,0 +1,10 @@
+{% if all_accounts %}
+    <h3>Here are all the accounts</h3>
+    <ul>
+        {% for account in all_accounts%}
+            <li><a href="{% url 'accounts:account' account.id %}">{{account.first_name}} {{account.last_name}}</a></li>
+        {% endfor %}
+    </ul>
+{% else %}
+    <h3>No accounts created</h3>
+{% endif %}

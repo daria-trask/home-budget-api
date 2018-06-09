@@ -1,0 +1,9 @@
+{% extends 'accounts/base.html' %}
+
+{% block body %}
+    <ul>
+        {% for list in lists %}
+            <li><a href="{% url 'accounts:list' list.account.id list.id %}">{{list.name}}</a> - {{list.total_sum}} {{list.description}}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
